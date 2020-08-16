@@ -18,4 +18,8 @@ public class Name {
         this.value = null
         ;
     }
+
+    public String asText() {
+        return  value.toString();
+    }
 }

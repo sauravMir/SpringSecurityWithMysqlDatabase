@@ -16,4 +16,8 @@ public class Password {
     private Password() {
         value = null;
     }
+
+    public String asText() {
+        return  value.toString();
+    }
 }

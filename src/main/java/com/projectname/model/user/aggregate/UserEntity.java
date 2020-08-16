@@ -4,27 +4,37 @@ package com.projectname.model.user.aggregate;
 import com.projectname.model.user.vo.*;
 import com.projectname.model.user_session.aggregate.UserSessionEntity;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-import javax.persistence.*;
 import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "user")
 @Data
+@RequiredArgsConstructor
 public class UserEntity {
+    // for hibernate
+    public UserEntity() {
+        this.id =0;
+        this.name = null;
+        this.password = null;
+        this.role = null;
+        this.created = null;
+        this.updated = null;
+    }
     @Id
-    private int id;
+    protected final int id;
     @Embedded
-    private Name name;
+    protected final Name name;
     @Embedded
-    private Password password;
+    protected final Password password;
     @Embedded
-    private Role role;
+    protected final Role role;
     @Embedded
-    private Created created;
+    protected final Created created;
     @Embedded
-    private Updated updated;
-
+    protected final Updated updated;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userEntity")
     List<UserSessionEntity> userSessionEntityList;
 }
